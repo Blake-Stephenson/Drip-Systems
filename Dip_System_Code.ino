@@ -13,6 +13,8 @@ const int ENB = 3;
 
 const int moistPin = A0;
 
+const float flowRate = 10;
+
 //variables for moisture
 const int AirValue = 438;   
 const int WaterValue = 208; 
@@ -47,6 +49,16 @@ void loop() {
 
     //Checking Sun Light Value
     if(IsLightOutside){
+
+      float temperatureValue = Temp();
+      float humidityValue = Humidity();
+
+      float EvapRate = EvaporationRate(temperatureValue, humidityValue);
+      float WaterNeeded = 100 + EvapRate;
+
+      float timeNeeded = (WaterNeeded/flowRate)*1000;
+      
+      OpenAndCloseMotor(timeNeeded);
       
     }
   }
@@ -122,7 +134,7 @@ float Temp(){
 }
 
 // Evaporation Formula
-float EvaporationRate(int temp, float humidity){
+float EvaporationRate(float temp, float humidity){
 
   //Getting Water's Vapor Pressure (mmHG)
   float P = pow(2.718, 20.386-(5132/(273+temp)));
