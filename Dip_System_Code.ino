@@ -10,12 +10,17 @@ const int IN3 = 5;
 const int IN4 = 4;
 const int ENA = 9;
 const int ENB = 3;
+
 const int ECHO = 13;
 const int TRIG = 11;
 
+const int lightPin = A1;
+
 const int moistPin = A0;
 
-const float flowRate = 7;
+const int fillWaterPin = 12;
+
+const float flowRate = 66;
 
 //variables for moisture
 const int AirValue = 438;   
@@ -46,12 +51,12 @@ void loop() {
   int moistValue = moist();
   
   //Checking soil Moist Percentage
-  if(getDistance(ECHO, TRIG) > 15)
-    if (moistValue > thresholdP){
-      TurnLED(true);
+  if(getDistance(ECHO, TRIG) < 20){
+    if (moistValue < thresholdP){
+      TurnLED(false);
   
       //Checking Sun Light Value
-      if(IsLightOutside){
+      if(IsLightOutside()){
   
         float temperatureValue = Temp();
         float humidityValue = Humidity();
@@ -60,21 +65,24 @@ void loop() {
         float WaterNeeded = 100 + EvapRate;
   
         float timeNeeded = (WaterNeeded/flowRate)*1000;
-        
+        Serial.print("time needed: ");
+        Serial.println(timeNeeded);
+
         OpenAndCloseMotor(timeNeeded);
-        
+        delay(100000);
       }
     }
   }
   else{
-    TurnLED(false);
+    TurnLED(true);
   }
 
   
   //OpenAndCloseMotor(5000);
   //EvaporationRate(30, 70);
   //float x = Humidity();
-  delay(1000);
+  delay(10000);
+  
 }
 
 //Returns Ultra Sonic Sensor reading in CM
@@ -95,6 +103,17 @@ float getDistance(int ECHO, int TRIG){
   
   float distance = (duration/2) * 343.42 * 0.0001;
 
+  if(distance>1000){
+    distance=0;
+  }
+
+    
+  Serial.print("dist:  ");
+  Serial.println(distance);
+
+
+
+  
   return distance;
 }
 
@@ -119,10 +138,10 @@ int moist(){
 void TurnLED(boolean onOrOff){
 
   if(onOrOff){
-      digitalWrite(12, HIGH);
+      digitalWrite(fillWaterPin, HIGH);
   }
   else{
-      digitalWrite(12, LOW);
+      digitalWrite(fillWaterPin, LOW);
   }
 }
 
@@ -130,10 +149,10 @@ void TurnLED(boolean onOrOff){
 boolean IsLightOutside(){
   
   //Check Light Value
-  int value = analogRead(A0);
+  int value = analogRead(lightPin);
   Serial.println("Analog value : ");
   Serial.println(value);
-  if(value > 250){
+  if(value > 0){
     return true;
   }
   return false;
