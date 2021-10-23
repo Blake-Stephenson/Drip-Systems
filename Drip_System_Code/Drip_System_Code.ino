@@ -152,7 +152,7 @@ boolean IsLightOutside(){
   int value = analogRead(lightPin);
   Serial.println("Analog value : ");
   Serial.println(value);
-  if(value > 0){
+  if(value > 212){
     return true;
   }
   return false;
