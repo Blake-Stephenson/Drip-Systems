@@ -10,10 +10,12 @@ const int IN3 = 5;
 const int IN4 = 4;
 const int ENA = 9;
 const int ENB = 3;
+const int ECHO = 13;
+const int TRIG = 11;
 
 const int moistPin = A0;
 
-const float flowRate = 10;
+const float flowRate = 7;
 
 //variables for moisture
 const int AirValue = 438;   
@@ -42,24 +44,26 @@ void loop() {
   //Getting most percentage
   int thresholdP = 70;
   int moistValue = moist();
-
+  
   //Checking soil Moist Percentage
-  if (moistValue > thresholdP){
-    TurnLED(true);
-
-    //Checking Sun Light Value
-    if(IsLightOutside){
-
-      float temperatureValue = Temp();
-      float humidityValue = Humidity();
-
-      float EvapRate = EvaporationRate(temperatureValue, humidityValue);
-      float WaterNeeded = 100 + EvapRate;
-
-      float timeNeeded = (WaterNeeded/flowRate)*1000;
-      
-      OpenAndCloseMotor(timeNeeded);
-      
+  if(getDistance(ECHO, TRIG) > 15)
+    if (moistValue > thresholdP){
+      TurnLED(true);
+  
+      //Checking Sun Light Value
+      if(IsLightOutside){
+  
+        float temperatureValue = Temp();
+        float humidityValue = Humidity();
+  
+        float EvapRate = EvaporationRate(temperatureValue, humidityValue);
+        float WaterNeeded = 100 + EvapRate;
+  
+        float timeNeeded = (WaterNeeded/flowRate)*1000;
+        
+        OpenAndCloseMotor(timeNeeded);
+        
+      }
     }
   }
   else{
@@ -71,6 +75,27 @@ void loop() {
   //EvaporationRate(30, 70);
   //float x = Humidity();
   delay(1000);
+}
+
+//Returns Ultra Sonic Sensor reading in CM
+float getDistance(int ECHO, int TRIG){
+  
+  pinMode(ECHO, INPUT);
+  pinMode(TRIG, OUTPUT);
+  
+  //Ultra-Sonic Input
+  digitalWrite(TRIG, LOW);
+  delay(10);
+  digitalWrite(TRIG, HIGH);
+  delay(10);
+  digitalWrite(TRIG, LOW);
+
+  float duration = pulseIn(ECHO, HIGH);
+  duration += 40;
+  
+  float distance = (duration/2) * 343.42 * 0.0001;
+
+  return distance;
 }
 
 int moist(){
