@@ -1,0 +1,401 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr User 7874 5906
+encoding utf-8
+Sheet 1 3
+Title "Drip Systems"
+Date "2021-10-23"
+Rev ""
+Comp "Drip Systems"
+Comment1 "MEC Senior Design 2021"
+Comment2 "Blake Stephenson, Daniel Fritzsche, Zaeem Ghauri, Tanay Patel"
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_UNO_R3 A?
+U 1 1 6174E252
+P 4550 2250
+F 0 "A?" H 4550 3431 50  0001 C CNN
+F 1 "Arduino_UNO_R3" H 4550 3339 50  0000 C CNN
+F 2 "Module:Arduino_UNO_R3" H 4550 2250 50  0001 C CIN
+F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 4550 2250 50  0001 C CNN
+	1    4550 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Driver_Motor:L298HN U?
+U 1 1 6174FA49
+P 2400 2250
+F 0 "U?" H 2400 3039 50  0001 C CNN
+F 1 "L298HN" H 2400 3039 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220-15_P2.54x2.54mm_StaggerOdd_Lead4.58mm_Vertical" H 2450 1600 50  0001 L CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/CD00000240.pdf" H 2550 2500 50  0001 C CNN
+	1    2400 2250
+	-1   0    0    1   
+$EndComp
+$Comp
+L Motor:Motor_DC M?
+U 1 1 617550B0
+P 900 2350
+F 0 "M?" H 1058 2346 50  0001 L CNN
+F 1 "Motor_DC" H 1058 2300 50  0000 L CNN
+F 2 "" H 900 2260 50  0001 C CNN
+F 3 "~" H 900 2260 50  0001 C CNN
+	1    900  2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_PHOTO R?
+U 1 1 61755C0F
+P 6400 3000
+F 0 "R?" H 6470 3046 50  0001 L CNN
+F 1 "R_PHOTO" H 6470 3000 50  0000 L CNN
+F 2 "" V 6450 2750 50  0001 L CNN
+F 3 "~" H 6400 2950 50  0001 C CNN
+	1    6400 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US 100Ω
+U 1 1 61756D70
+P 3700 3250
+F 0 "100Ω" H 3768 3250 50  0000 L CNN
+F 1 "R_Small_US" H 3768 3205 50  0001 L CNN
+F 2 "" H 3700 3250 50  0001 C CNN
+F 3 "~" H 3700 3250 50  0001 C CNN
+	1    3700 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small_US 10kΩ
+U 1 1 6175751F
+P 6400 3400
+F 0 "10kΩ" H 6468 3400 50  0000 L CNN
+F 1 "R_Small_US" H 6468 3355 50  0001 L CNN
+F 2 "" H 6400 3400 50  0001 C CNN
+F 3 "~" H 6400 3400 50  0001 C CNN
+	1    6400 3400
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 5550 1350 1450 450 
+U 61759B31
+F0 "Soil Sensor" 50
+F1 "Capacitive soil moisture sensor.sch" 50
+F2 "VCC" I L 5550 1550 50 
+F3 "GND" I L 5550 1650 50 
+F4 "AOUT" I L 5550 1450 50 
+$EndSheet
+$Sheet
+S 1200 3400 1450 600 
+U 6175D3CE
+F0 "Ultrasonic Sensor" 50
+F1 "Ultrasonic Sensor.sch" 50
+F2 "VCC" I R 2650 3550 50 
+F3 "Trig" I R 2650 3650 50 
+F4 "Echo" I R 2650 3750 50 
+F5 "GND" I R 2650 3850 50 
+$EndSheet
+$Comp
+L power:Earth #PWR?
+U 1 1 61773FD3
+P 2850 4000
+F 0 "#PWR?" H 2850 3750 50  0001 C CNN
+F 1 "Earth" H 2850 3850 50  0001 C CNN
+F 2 "" H 2850 4000 50  0001 C CNN
+F 3 "~" H 2850 4000 50  0001 C CNN
+	1    2850 4000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 61774893
+P 2850 3400
+F 0 "#PWR?" H 2850 3250 50  0001 C CNN
+F 1 "VCC" H 2865 3573 50  0000 C CNN
+F 2 "" H 2850 3400 50  0001 C CNN
+F 3 "" H 2850 3400 50  0001 C CNN
+	1    2850 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 6177FA3B
+P 6400 3650
+F 0 "#PWR?" H 6400 3400 50  0001 C CNN
+F 1 "Earth" H 6400 3500 50  0001 C CNN
+F 2 "" H 6400 3650 50  0001 C CNN
+F 3 "~" H 6400 3650 50  0001 C CNN
+	1    6400 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 6177FA41
+P 6400 2700
+F 0 "#PWR?" H 6400 2550 50  0001 C CNN
+F 1 "VCC" H 6415 2873 50  0000 C CNN
+F 2 "" H 6400 2700 50  0001 C CNN
+F 3 "" H 6400 2700 50  0001 C CNN
+	1    6400 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 61780423
+P 2400 1400
+F 0 "#PWR?" H 2400 1150 50  0001 C CNN
+F 1 "Earth" H 2400 1250 50  0001 C CNN
+F 2 "" H 2400 1400 50  0001 C CNN
+F 3 "~" H 2400 1400 50  0001 C CNN
+	1    2400 1400
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VCC #PWR?
+U 1 1 61780429
+P 2100 3000
+F 0 "#PWR?" H 2100 2850 50  0001 C CNN
+F 1 "VCC" H 2115 3173 50  0000 C CNN
+F 2 "" H 2100 3000 50  0001 C CNN
+F 3 "" H 2100 3000 50  0001 C CNN
+	1    2100 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6400 2700 6400 2850
+Wire Wire Line
+	6400 3150 6400 3200
+Wire Wire Line
+	6400 3500 6400 3650
+Wire Wire Line
+	6400 3200 6050 3200
+Wire Wire Line
+	6050 3200 6050 2350
+Connection ~ 6400 3200
+Wire Wire Line
+	6400 3200 6400 3300
+Wire Wire Line
+	5050 2350 6050 2350
+Wire Wire Line
+	5550 1450 5250 1450
+Wire Wire Line
+	5250 1450 5250 2250
+Wire Wire Line
+	5250 2250 5050 2250
+$Comp
+L power:Earth #PWR?
+U 1 1 617AD148
+P 5450 2100
+F 0 "#PWR?" H 5450 1850 50  0001 C CNN
+F 1 "Earth" H 5450 1950 50  0001 C CNN
+F 2 "" H 5450 2100 50  0001 C CNN
+F 3 "~" H 5450 2100 50  0001 C CNN
+	1    5450 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 1650 5450 1650
+Wire Wire Line
+	5450 1650 5450 2100
+Wire Wire Line
+	5550 1550 5450 1550
+Wire Wire Line
+	5450 1550 5450 1100
+$Comp
+L power:VCC #PWR?
+U 1 1 617B06AB
+P 4950 1100
+F 0 "#PWR?" H 4950 950 50  0001 C CNN
+F 1 "VCC" H 4965 1273 50  0000 C CNN
+F 2 "" H 4950 1100 50  0001 C CNN
+F 3 "" H 4950 1100 50  0001 C CNN
+	1    4950 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:Earth #PWR?
+U 1 1 617B20DA
+P 4650 3550
+F 0 "#PWR?" H 4650 3300 50  0001 C CNN
+F 1 "Earth" H 4650 3400 50  0001 C CNN
+F 2 "" H 4650 3550 50  0001 C CNN
+F 3 "~" H 4650 3550 50  0001 C CNN
+	1    4650 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4950 1250 4950 1100
+Wire Wire Line
+	4650 3350 4650 3450
+Wire Wire Line
+	4550 3350 4550 3450
+Wire Wire Line
+	4550 3450 4650 3450
+Connection ~ 4650 3450
+Wire Wire Line
+	4650 3450 4650 3550
+Wire Wire Line
+	4450 3350 4450 3450
+Wire Wire Line
+	4450 3450 4550 3450
+Connection ~ 4550 3450
+$Comp
+L power:Earth #PWR?
+U 1 1 617CA937
+P 3700 3750
+F 0 "#PWR?" H 3700 3500 50  0001 C CNN
+F 1 "Earth" H 3700 3600 50  0001 C CNN
+F 2 "" H 3700 3750 50  0001 C CNN
+F 3 "~" H 3700 3750 50  0001 C CNN
+	1    3700 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 6175463C
+P 3700 3550
+F 0 "D?" H 3693 3767 50  0001 C CNN
+F 1 "LED" V 3693 3432 50  0000 R CNN
+F 2 "" H 3700 3550 50  0001 C CNN
+F 3 "~" H 3700 3550 50  0001 C CNN
+	1    3700 3550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3700 3400 3700 3350
+Wire Wire Line
+	3700 3750 3700 3700
+Wire Wire Line
+	4050 2850 3700 2850
+Wire Wire Line
+	3700 2850 3700 3150
+Wire Wire Line
+	900  2150 900  2050
+Wire Wire Line
+	900  2050 1600 2050
+Wire Wire Line
+	1600 2050 1600 2350
+Wire Wire Line
+	1600 2350 1800 2350
+Wire Wire Line
+	900  2650 900  2750
+Wire Wire Line
+	900  2750 1600 2750
+Wire Wire Line
+	1600 2750 1600 2450
+Wire Wire Line
+	1600 2450 1800 2450
+Wire Wire Line
+	2400 1400 2400 1550
+Wire Wire Line
+	2300 2950 2100 2950
+Wire Wire Line
+	2100 2950 2100 3000
+Wire Wire Line
+	2400 2950 2300 2950
+Connection ~ 2300 2950
+Wire Wire Line
+	4750 1250 4950 1250
+Wire Wire Line
+	3000 2550 4050 2550
+Wire Wire Line
+	3000 2750 3350 2750
+Wire Wire Line
+	3350 2750 3350 2350
+Wire Wire Line
+	3350 2350 4050 2350
+Wire Wire Line
+	3000 2650 3300 2650
+Wire Wire Line
+	3300 2650 3300 2250
+Wire Wire Line
+	3300 2250 4050 2250
+Wire Wire Line
+	3000 2350 3250 2350
+Wire Wire Line
+	3250 2350 3250 2150
+Wire Wire Line
+	3250 2150 4050 2150
+Wire Wire Line
+	3000 2250 3200 2250
+Wire Wire Line
+	3200 2250 3200 2050
+Wire Wire Line
+	3200 2050 4050 2050
+Wire Wire Line
+	3000 2150 3150 2150
+Wire Wire Line
+	3150 2150 3150 1950
+Wire Wire Line
+	3150 1950 4050 1950
+Wire Wire Line
+	2650 3750 3500 3750
+Wire Wire Line
+	3500 3750 3500 2950
+Wire Wire Line
+	3500 2950 4050 2950
+Wire Wire Line
+	4050 2750 3400 2750
+Wire Wire Line
+	3400 2750 3400 3650
+Wire Wire Line
+	3400 3650 2650 3650
+$Comp
+L power:VCC #PWR?
+U 1 1 617AE9C7
+P 5450 1100
+F 0 "#PWR?" H 5450 950 50  0001 C CNN
+F 1 "VCC" H 5465 1273 50  0000 C CNN
+F 2 "" H 5450 1100 50  0001 C CNN
+F 3 "" H 5450 1100 50  0001 C CNN
+	1    5450 1100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2650 3550 2850 3550
+Wire Wire Line
+	2850 3550 2850 3400
+Wire Wire Line
+	2650 3850 2850 3850
+Wire Wire Line
+	2850 3850 2850 4000
+$Comp
+L power:Earth #PWR?
+U 1 1 618A1E7E
+P 3400 1600
+F 0 "#PWR?" H 3400 1350 50  0001 C CNN
+F 1 "Earth" H 3400 1450 50  0001 C CNN
+F 2 "" H 3400 1600 50  0001 C CNN
+F 3 "~" H 3400 1600 50  0001 C CNN
+	1    3400 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sensor:DHT11 MoistureSensor
+U 1 1 618C24DB
+P 3400 1150
+F 0 "MoistureSensor" H 3157 1196 50  0000 R CNN
+F 1 "DHT11" H 3157 1105 50  0000 R CNN
+F 2 "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm" H 3400 750 50  0001 C CNN
+F 3 "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf" H 3550 1400 50  0001 C CNN
+	1    3400 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4650 1250 4650 700 
+Wire Wire Line
+	4650 700  3400 700 
+Wire Wire Line
+	3400 700  3400 850 
+Wire Wire Line
+	3400 1450 3400 1600
+Wire Wire Line
+	3700 1150 3850 1150
+Wire Wire Line
+	3850 1150 3850 2650
+Wire Wire Line
+	3850 2650 4050 2650
+$EndSCHEMATC
